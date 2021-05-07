@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/new'
   get 'pages/link'
   root 'pages#link'
   get 'pages/help'
