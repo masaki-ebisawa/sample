@@ -1,2 +1,2 @@
 module ApplicationHelper
-end
+  <%= current_user %>
