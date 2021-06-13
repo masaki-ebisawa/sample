@@ -4,21 +4,26 @@ class User < ApplicationRecord
                        
   validates :email, presence: true,
   
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  EMAIL_REGEX = /[a-z0-9._+]+@[a-z0-9-]+\.[a-z0-9-]+.*/i
   validates :email, presence: true, 
-                       format: { with: VALID_EMAIL_REGEX }
+                       format: { with: EMAIL_REGEX }
 
   has_secure_password
   
-  VALID_PASSWORD_REGEX = /\A[\w\-]{8,32}+\z/i
+  PW_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}\z/i
   validates :password, presence: true,
                        length: { minimum: 8, maximum: 32 },
                        format: {
-                         with: VALID_PASSWORD_REGEX
+                         with: PW_REGEX
                        },
                        allow_nil: true
   
   validates :encrypted_password,:password,:password_confirmation,
                        length:{minimum: 8, maximum: 32 },
-                       format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/}
+                       format:{with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}\z/i}
+
+  has_many :topics
+  
+  mount_uploader :image, ImageUploader
+
 end
