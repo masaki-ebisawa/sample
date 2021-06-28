@@ -12,7 +12,11 @@
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <% if !topic.favorite_users.include?(current_user) %>
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
-                <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+                <i class="far fa-heart favorite-btn"></i>
+              <% end %>
+            <% else %>
+              <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
+                <i class="far fa-heart unfavorite-btn"></i>
               <% end %>
             <% end %>
             <p class="topic-text">
