@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true,
-                       length: { maximum: 15 },
-                       
-  validates :email, presence: true,
+                       length: { maximum: 15 }
   
   EMAIL_REGEX = /[a-z0-9._+]+@[a-z0-9-]+\.[a-z0-9-]+.*/i
   validates :email, presence: true, 
