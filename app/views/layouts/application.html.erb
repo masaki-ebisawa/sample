@@ -32,6 +32,11 @@
               <% end %>
             </li>
             <li>
+            　<% if @user.id == @current_user.id %>
+　　　　　　　　<%= link_to("編集", "/users/#{@user.id}/edit") %>
+　　　　　　　<% end %>
+　　　　　　</li>
+            <li>
               <%= link_to logout_path, method: :delete do %>
                 <%= image_tag "icons/logout.png" %>
               <% end %>
@@ -47,11 +52,6 @@
                 <%= image_tag "icons/login.png" %>
               <% end %>
             </li>
-            <li>
-            　<% if @user.id == @current_user.id %>
-　　　　　　　　<%= link_to("編集", "/users/#{@user.id}/edit") %>
-　　　　　　　<% end %>
-　　　　　　</li>
           <% end %>
         </ul>
       </div>
