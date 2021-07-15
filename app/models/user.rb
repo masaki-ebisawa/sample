@@ -18,7 +18,7 @@ class User < ApplicationRecord
                        },
                        allow_nil: true
   
-  validates :encrypted_password,:password,:password_confirmation,
+  validates :password,:password_confirmation,
                        length:{minimum: 8, maximum: 32 },
                        format:{with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}\z/i}   #半角英字と半角数字それぞれ1文字以上含む8文字以上32文字以下の文字列
 
@@ -26,6 +26,5 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :favorite_topics, through: :favorites, source: 'topic'
   
-  mount_uploader :image, ImageUploader
 
 end
