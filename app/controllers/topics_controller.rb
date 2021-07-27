@@ -8,8 +8,8 @@ class TopicsController < ApplicationController
   end
   
   def create
-    @topic = current_user.topic.new(topic_params)
-    
+    @topic=Topic.new(topic_params)
+    @topic.user_id=current_user.id
     if @topic.save
       redirect_to topics_path, success: '投稿に成功しました'
     else
