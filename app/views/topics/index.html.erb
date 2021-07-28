@@ -8,7 +8,9 @@
               <%= topic.user.name %>
             </h2>
             <%= image_tag topic.image.url %>
-            <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+            <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
+  　　　　　　　　　　<%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
+　　　　　　<% end %>
             <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
             <% if !topic.favorite_users.include?(current_user) %>
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
