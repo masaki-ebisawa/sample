@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates :name, presence: true, uniqueness: true,
+  validates :name, presence: true, 
                        length: { maximum: 15 }
   
   EMAIL_REGEX = /[a-z0-9._+]+@[a-z0-9-]+\.[a-z0-9-]+.*/i  #字セット[]で指定可能な文字列のセットを作り、その文字の任意の一文字という意味の[]+を＠マークとドットの前後に並べてます。
